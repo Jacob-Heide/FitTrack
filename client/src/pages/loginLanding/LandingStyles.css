@@ -1,28 +1,31 @@
-/* button {
-    width: 200px;
-    border-radius: 20px;
-    padding: 10px;
-    margin: auto;
-}
-
-img {
-    border-radius: 20px;
-    width: 175px;
-}
-.run-text{
-    text-align: center;
-}
-
-.grid-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 200px;
-}
 .header {
-    background-color: blue;
-    padding: 50px;
-    font-size: 50px;
-    margin: -10px;
-    border-color: black;
-    
-} */
+    background-color: white;
+    margin-left: 200px;
+    display: flex;
+    justify-content: flex-end;
+}
+.logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    height: 64px;
+
+  }
+  
+  .logo-image {
+    height: 50px; 
+    margin: 10px; 
+  }
+
+  .landing-container {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+    background-image: url("/public/images/landing-back.jpg");
+  }
+
+  .my-calendar-icon {
+    transform: scale(2);
+  }
