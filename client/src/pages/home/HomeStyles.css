@@ -1,0 +1,68 @@
+.home-wrapper{
+    background-image: url("/public/images/home-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.title {
+    color: aliceblue;
+    margin-left: 100px;
+    margin-top: 200px;
+    
+}
+.outer-container h1{
+    font-size: 75px;
+    font-family: 'Signika Negative', sans-serif;
+}
+.outer-container p{
+    margin-top: -20px;
+    color: aliceblue;
+    font-size: smaller;
+    font-family: 'Kalam', cursive;
+    width: 600px;
+    
+}
+.get-started {
+    border-radius: 100px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 200px;
+    margin-top: 20px;
+    background-color: coral;
+    font-weight: bolder;
+}
+.pics {
+    display: grid;
+    margin-left: 200px;
+    margin-top: 100px;
+}
+.outer-container img {
+    width: 150px;
+    height: 250px;
+    border-radius: 20px;
+    padding: 10px;
+}
+.outer-container {
+    display: flex;
+}
+.login-button-home {
+    color: aliceblue;
+    text-align: end;
+    /* padding: 30px;
+    padding-right: 50px; */
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-right: 30px;
+    
+}
+.login-button-container {
+    position: relative;
+}

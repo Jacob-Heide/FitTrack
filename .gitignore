@@ -1,0 +1,6 @@
+# Dependency directories
+client/node_modules/
+server/node_modules/
+server/.env/
+.vscode/
+node_modules/
