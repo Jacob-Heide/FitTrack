@@ -6,8 +6,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
 
-
-
 //Route imports
 import userRoutes from './routes/users.route.js';
 
@@ -25,7 +23,7 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
 //Define routes
-app.use('/api', (userRoutes))
+app.use('/api', userRoutes)
 
 //Database connection starts here
 const CONNECTION_URL = `mongodb+srv://${DBusername}:${DBpassword}@fittrackdb.djl0zsm.mongodb.net/?retryWrites=true&w=majority`;

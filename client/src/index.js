@@ -6,11 +6,11 @@ import enUS from 'antd/locale/en_US';
 
 import App from './App';
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
       <ConfigProvider locale={enUS}>
         <App />
       </ConfigProvider>
     </BrowserRouter>
-)
+);

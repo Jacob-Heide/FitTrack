@@ -1,0 +1,44 @@
+.header {
+    background-color: white;
+    margin-left: 200px;
+    display: flex;
+    justify-content: flex-end;
+    height: 80px;
+}
+.logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    height: 80px;
+
+  }
+  
+  .logo-image {
+    height: 60px; 
+    margin: 10px; 
+  }
+
+  
+  .my-calendar-icon {
+    transform: scale(2);
+  }
+  .avatar {
+    background-color: purple;
+    margin-top: 15px;
+    margin-left: 50px;
+  }
+
+  .ant-dropdown-menu {
+    margin-top: 11px !important;
+  }
+
+  .avatar:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9); /* Optional: add a box shadow for visual effect */
+  }
+
+  .ant-dropdown-menu-title-content {
+    font-size: 15px;
+  }
+

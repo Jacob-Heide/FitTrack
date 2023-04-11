@@ -66,3 +66,10 @@
 .login-button-container {
     position: relative;
 }
+
+.home-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 64px;
+}

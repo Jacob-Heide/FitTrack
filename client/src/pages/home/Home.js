@@ -3,16 +3,18 @@ import { Link } from "react-router-dom";
 import "./HomeStyles.css";
 
 export default function Home() {
+
   return (
     <div className="home-wrapper">
         <div className="login-button-container">
-      <Link to="/login">
-        <a href="/login" className="login-button-home">Login</a>
+        {/* <img className="home-logo" src="/images/FitTrack-logo.png" alt="Running" /> */}
+      <Link to="/login" className="login-button-home">
+        Login
       </Link>
       </div>
       <div className="outer-container">
         <div className="title">
-          <h1 className="">FitTrack</h1>
+          <h1>FitTrack</h1>
           <p>
             A website where you can track all your workout progress. Always stay
             on top of your improvment with FitTrack with just a couple clicks of

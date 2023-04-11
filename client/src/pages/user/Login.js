@@ -1,14 +1,40 @@
 import React from "react";
-import { Form, Button } from "antd";
+import { message, Form, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { ProFormText } from "@ant-design/pro-form";
 import "./LoginStyles.css";
-import { Link } from "react-router-dom";
+import { login } from "../../services/api.service";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineLeft } from 'react-icons/ai'
 
 
 export default function Login() {
+  
+  
+  const navigate = useNavigate()
+
+
+  async function handleSubmit(values) {
+    try {
+      //
+      const res = await login({
+        username: values.username,
+        password: values.password,
+      });
+      
+      localStorage.setItem('userinfo', JSON.stringify(res));
+      message.success("Login succsessful");
+      setTimeout(() => {
+        navigate('/landing')
+    }, 1500)
+    } catch (err) {
+      console.log("err", err);
+      message.error(err.data?.message || "Login failed, please try again");
+    }
+  }
   return (
+
+    
     <div className="login-container">
       
           
@@ -20,6 +46,7 @@ export default function Login() {
           <Form
             title="Login"
             name="login"
+            onFinish={handleSubmit}
             scrollToFirstError
           >
             <ProFormText
@@ -70,48 +97,4 @@ export default function Login() {
       </div>
       </div>
     );
-  
-  
-  
-  
-  // return (
-  //   <div className="form-wrapper">
-      
-  //     <div  className="login-form">
-  //       {/* {" "} */}
-  //       <LoginForm title="Welcome to FitTrack" subTitle=" ">
-  //         <ProFormText
-  //           name="username"
-  //           fieldProps={{
-  //             size: "large",
-  //             prefix: <UserOutlined className={"prefixIcon"} />,
-  //           }}
-  //           placeholder={"Enter Username"}
-  //           rules={[
-  //             {
-  //               required: true,
-  //               message: "Username required!",
-  //             },
-  //           ]}
-  //         />
-  //         <ProFormText.Password
-  //           name="password"
-  //           fieldProps={{
-  //             size: "large",
-  //             prefix: <LockOutlined className={"prefixIcon"} />,
-  //           }}
-  //           placeholder={"Enter Password"}
-  //           rules={[
-  //             {
-  //               required: true,
-  //               message: "Password is required",
-  //             },
-  //           ]}
-  //         />
-  //       </LoginForm>
-        
-  //     </div>
-      
-  //   </div>
-  // );
 }

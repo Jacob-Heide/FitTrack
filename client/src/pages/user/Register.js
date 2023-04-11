@@ -4,10 +4,13 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { ProFormText } from "@ant-design/pro-form";
 import { register } from "../../services/api.service";
 import "./RegisterStyles.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { AiOutlineLeft } from 'react-icons/ai'
 
 export default function Register() {
+
+  const navigate = useNavigate();
+
   async function handleSubmit(values) {
     try {
       const res = await register({
@@ -18,6 +21,9 @@ export default function Register() {
       });
       console.log("res", res);
       message.success("Registerd succsessfully");
+      setTimeout(() => {
+        navigate('/login')
+    }, 1500)
     } catch (err) {
       console.log("err", err);
       message.error(err.data?.message || "Register failed, please try again");

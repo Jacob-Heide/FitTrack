@@ -1,26 +1,64 @@
 import User from '../models/users.model.js';
-// Handlers for routes
-export const getUsers = async(req, res) => {
-    try {
-        console.log('getting users....')
-        const user = await User.find();
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
-        res.status(200).json(user);
+
+// Handlers for routes
+
+// logout
+export const logout = async (req, res) => {
+    try {
+        console.log('logout', res.user)
+        if (res.user) {
+            res.user.token = ''
+            await res.user.save()
+        }
+        res.json({
+            data: {},
+            status: 'success',
+            message: 'logout success',
+        })
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
+
+export const login = async(req, res) => {
+    try {
+        console.log(req.body);
+
+        const {username, password} = req.body
+        const user = await User.findOne({username: username})
+        if (user == null) {
+            res.status(404).json({ message: "username or password is incorrect" });
+            return
+        }
+        console.log('user', user);
+        const match = await bcrypt.compare(password, user.password);
+        console.log('match', match);
+        if (!match) {
+            res.status(404).json({message: "username or password is incorrect" })
+                return
+                }
+
+        const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET)
+        res.status(200).json({...user._doc, token: token });
+
     } catch(error){
         res.status(404).json({ message: error.message });
     }
 }; 
 
 export const createUser = async(req, res) => {
-    // console.log("headers", req.headers);
-
-
-    //for front end 
+ 
     const user = req.body;
-    // console.log('request body', user);
 
-    //send in user we get from the front end
-    const newUser = new User(user);
+    const hash = bcrypt.hashSync(user.password, 10);
+    const newUser = new User({
+        ...user,
+        password: hash
+    });
+
     console.log("new user: ", newUser);
     
     try {
@@ -30,49 +68,5 @@ export const createUser = async(req, res) => {
     } catch(error){
         res.status(409).json({ message: error.message });
     }
-}; 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // // Extract the user data from the request body
-    //     const { firstName, lastName, username, password } = req.body;
-    //     // Create a new user object
-    //     let user = {
-    //       firstName,
-    //       lastName,
-    //       username,
-    //       password,
-    //     };
-    //     console.log(user);
-
-    // user = new User(req.body);
-    // user.save()
-    //     .then(() => {
-    //         res.status(200).json({ 'user': 'Added successfully' });
-    //     })
-    //     .catch((err) => {
-    //         res.status(400).send('Failed to create new record');
-    //     });
-    // };
-
-
-
-
+};
 

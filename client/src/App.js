@@ -4,7 +4,7 @@ import Login from './pages/user/Login';
 import Register from './pages/user/Register';
 import Calendar from './pages/calendar/Calendar';
 import Landing from './pages/loginLanding/LoginLanding';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 import './App.css'
 
 const App = () => {
